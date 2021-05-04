@@ -1,0 +1,47 @@
+  <%- include('templates/header') -%> 
+
+  <div class="container mt-5">
+    <h3 class="text-center">Data Mahasiswa</h3>
+    <a href="/mahasiswa/tambah" class="btn btn-outline-success mb-3 font-weight-bold">Add Mahasiswa</a>
+    <table class="table table-stripped table-hover shadow-lg">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NIM</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Alamat Lengkap</th>
+          <th scope="col">Telepon</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length !== 0) { %>
+          <% data.forEach((value, index) => { %>
+            <tr>
+              <th scope="row"><%= ++index %></th>
+              <td><%= value.nim %></td>
+              <td><%= value.nama %></td>
+              <td><%= value.jenis_kelamin %></td>
+              <td><%= value.alamat %>, Kab. <%= value.nama_kota %>, Prov. <%= value.nama_provinsi %></td>
+              <td><%= value.telepon %></td>
+              <td><%= value.email %></td>
+              <td>
+                <a href="/mahasiswa/edit/<%= value.nim %> " class="badge badge-pill badge-primary px-3 py-2 m-1">Edit</a>
+                <a href="/mahasiswa/delete/<%= value.nim %>" class="badge badge-pill badge-danger px-3 py-2 m-1">Delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="8" style="text-align: center;">
+              No Data Mahasiswa
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <%- include('templates/footer') -%>

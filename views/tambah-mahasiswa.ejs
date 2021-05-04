@@ -1,0 +1,38 @@
+  <%- include('templates/header') -%>
+  
+  <div class="container mt-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item text-decoration-none"><a href="/mahasiswa">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Mahasiswa</li>
+      </ol>
+    </nav>
+    
+    <form action="/mahasiswa/tambah-mahasiswa" class="form-group p-4 shadow rounded" method="post">
+      <label for="nim">NIM</label>
+      <input type="number" name="nim" id="nim" placeholder="Masukkan NIM Mahasiswa" class="form-control" required>
+      <label for="nama">Nama</label>
+      <input type="text" name="nama" id="nama" placeholder="Masukkan Nama Mahasiswa" class="form-control" required>
+      <label for="jenkel">Jenis Kelamin</label><br>
+      <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="L" checked>Laki-Laki
+      <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="P">Perempuan <br>
+      <label for="alamat">Alamat</label>
+      <textarea name="alamat" id="alamat" class="form-control" cols="10" rows="5" placeholder="Masukan Desa dan Kecamatan Anda"></textarea>
+      <label for="prodi">Kota</label>
+      <select name="id_kota" class="form-control" id="prodi" required>
+        <option value="" disabled>-- Pilih Kota --</option>
+        <% id_kota.forEach( data => { %>
+          <option value="<%= data.id_kota %>"><%= data.nama_kota %></option>
+          <% }) %>
+      </select>
+      <label for="telepon">Telepon</label>
+      <input type="number" name="telepon" id="telepon" placeholder="Masukkan No. Telp Anda" class="form-control" required>
+      
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" class="form-control" required>
+      <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+      <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+    </form>
+  </div>
+
+  <%- include('templates/footer') -%>
