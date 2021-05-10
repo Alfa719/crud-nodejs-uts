@@ -1,0 +1,59 @@
+<%- include('templates/header') -%>
+
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Kota</li>
+    </ol>
+  </nav>
+  <!-- Tambah Data -->
+  <form action="/kota/tambah" class="form-group p-4 shadow rounded" method="post" style="border-left: 4px solid blue;">
+    <label for="nama">Kota</label>
+    <input type="text" name="nama_kota" id="nama" placeholder="Masukkan Nama Kota Baru" required class="form-control">
+    <label for="prov">Provinsi</label>
+    <select name="id_provinsi" class="form-control" id="id_provinsi" required>
+      <option disabled selected>-- Pilih Provinsi --</option>
+      <% provinsi.forEach( data => { %>
+        <option value="<%= data.id_provinsi %>">
+          <%= data.nama_provinsi %>
+        </option>
+        <% }) %>
+    </select>
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+
+  <table class="table shadow rounded">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nama Kota</th>
+        <th scope="col">Provinsi</th>
+        <th scope="col">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data.length !== 0) { %>
+        <% data.forEach((value, no) => { %>
+          <tr>
+            <th scope="row"><%= ++no %></th>
+            <td><%= value.nama_kota %></td>
+            <td><%= value.nama_provinsi %></td>
+            <td>
+              <a href="/kota/delete/<%= value.id_kota %>" class="badge badge-pill badge-danger px-3 py-2 m-1">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+          <tr>
+            <td colspan="8" style="text-align: center;">
+              No Data Kota
+            </td>
+          </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('templates/footer') -%>

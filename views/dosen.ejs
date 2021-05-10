@@ -3,16 +3,15 @@
 
 <div class="container">
   
-  <h3 class="font-weight-bold text-center m-2">Data Mahasiswa</h3>
-  <form action="/mahasiswa/search" method="post">
-      <input type="search" name="search" id="search" class="form-control col-md-4 float-right shadow-lg" placeholder="Search Mahasiswa By Kota Or Provinsi">
+  <h3 class="font-weight-bold text-center m-2">Data Dosen</h3>
+  <form action="/dosen/search" method="post">
+    <input type="search" name="search" id="search" class="form-control col-md-4 float-right shadow-lg p-2" placeholder="Search Dosen By Kota Or Provinsi">
   </form>
-  <a href="/mahasiswa/tambah" class="btn btn-outline-success mb-3">Tambah Data</a>
+  <a href="/dosen/tambah" class="btn btn-outline-success mb-3">Tambah Data</a>
   <table class="table table-stripped table-hover shadow-lg">
     <thead class="bg-primary text-white">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">NIM</th>
         <th scope="col">Nama</th>
         <th scope="col">Gender</th>
         <th scope="col">Alamat</th>
@@ -26,22 +25,21 @@
         <% data.forEach((value, index) => { %>
           <tr>
             <th scope="row"><%= ++index %></th>
-            <td><%= value.nim %></td>
             <td><%= value.nama %></td>
             <td><%= value.jenis_kelamin %></td>
             <td><%= value.alamat %>, Kab. <%= value.nama_kota %>, Prov. <%= value.nama_provinsi %></td>
             <td><%= value.telepon %></td>
             <td><%= value.email %></td>
             <td>
-              <a href="/mahasiswa/edit/<%= value.nim %> " class="px-3 py-2 m-1 badge badge-pill badge-primary">Edit</a>
-              <a href="/mahasiswa/delete/<%= value.nim %>" class="px-3 py-2 m-1 badge badge-pill badge-danger">Delete</a>
+              <a href="/dosen/edit/<%= value.id_dosen %> " class="px-3 py-2 m-1 badge badge-pill badge-primary">Edit</a>
+              <a href="/dosen/delete/<%= value.id_dosen %>" class="px-3 py-2 m-1 badge badge-pill badge-danger">Delete</a>
             </td>
           </tr>
         <% }) %>
       <% } else { %>
         <tr>
           <td colspan="8" style="text-align: center;">
-            No Data Mahasiswa
+            No Data Dosen
           </td>
         </tr>
       <% } %>

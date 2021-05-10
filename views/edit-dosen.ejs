@@ -1,0 +1,38 @@
+<%- include('templates/header') -%>
+  
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item text-decoration-none"><a href="/dosen">Dosen</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Data Dosen</li>
+    </ol>
+  </nav>
+  <form action="/dosen/update" method="post" class="form-group p-4 shadow-lg border-left-primary rounded" style="border-left: 4px solid red;">
+    <input type="hidden" name="id_dosen" value="<%= data.id_dosen %> ">
+    <label for="nama">Nama</label>
+    <input type="text" name="nama" id="nama" value="<%= data.nama %> " class="form-control" placeholder="Nama Dosen">
+    <label for="jenkel">Jenis Kelamin</label><br>
+    <input type="radio" value="L" name="jenis_kelamin" id="jenkel" <%= (data.jenis_kelamin == 'L') ? 'checked' : ''; %> >Laki-Laki
+    <input type="radio" value="P" name="jenis_kelamin" id="jenkel" <%= (data.jenis_kelamin == 'P') ? 'checked' : ''; %>>Perempuan <br><br>
+    <label for="alamat">Alamat</label>
+    <input type="text" name="alamat" id="alamat" value="<%= data.alamat %> " class="form-control" placeholder="Alamat">
+    <label for="kota">Kota</label>
+    <select name="id_kota" class="form-control" id="kota">
+      <option disabled>-- Pilih Kota --</option>
+      <% kota.forEach(value => { %>
+        <option value="<%= value.id_kota %>" <%= (value.nama_kota == data.nama_kota) ? 'selected' : ''; %>  >
+          <%= value.nama_kota %>
+        </option>
+      <% }) %>
+    </select>
+    <label for="telepon">Telepon</label>
+    <input type="text" name="telepon" id="telepon" value="<%= data.telepon %> " class="form-control">
+    <label for="nama">E-mail</label>
+    <input type="email" name="email" id="e" value="<%= data.email %> " class="form-control" placeholder="Email">
+    <input type="submit" value="Update Data" class="btn btn-success mt-2">
+    <a href="/dosen" class="btn btn-outline-danger mt-2">Kembali</a>
+  </form>
+</div>
+
+<%- include('templates/footer') -%>

@@ -11,7 +11,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/mahasiswa', require('./routes/mahasiswa'));
-app.use('/prodi', require('./routes/prodi'));
+app.use('/dosen', require('./routes/dosen'));
+app.use('/jadwal', require('./routes/jadwal'));
+app.use('/matkul', require('./routes/matkul'));
+app.use('/provinsi', require('./routes/provinsi'));
+app.use('/kota', require('./routes/kota'));
+app.use('/', require('./routes/dashboard'));
+
 
 app.listen(5000, () => console.log('Server running at port 5000'));
 

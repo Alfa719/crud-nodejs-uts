@@ -1,0 +1,66 @@
+<%- include('templates/header') -%>
+  
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item text-decoration-none"><a href="/jadwal">Jadwal</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Jadwal</li>
+    </ol>
+  </nav>
+  
+  <form action="/jadwal/update" class="form-group p-4 shadow rounded" method="post" style="border-left: 4px solid red;">
+    <input type="hidden" name="id_jadwal" value="<%= data.id_jadwal %> ">
+    <label for="id_dosen">Dosen</label>
+    <select name="id_dosen" class="form-control" id="id_dosen" required>
+      <option disabled selected>-- Pilih Dosen --</option>
+      <% data_dosen.forEach( dosen => { %>
+        <option value="<%= dosen.id_dosen %>" <%= (data.nama_dosen == dosen.nama_dosen) ? 'selected' : '' %> >
+          <%= dosen.nama_dosen %>
+        </option>
+        <% }) %>
+    </select>
+    <label for="id_matkul">Mata Kuliah</label>
+    <select name="id_matkul" class="form-control" id="id_matkul" required>
+      <option disabled selected>-- Pilih Mata Kuliah --</option>
+      <% data_matkul.forEach( matkul => { %>
+        <option value="<%= matkul.id_matkul %>" <%= (data.nama_matkul== matkul.nama_matkul) ? 'selected' : '' %> >
+          <%= matkul.nama_matkul %>
+        </option>
+        <% }) %>
+    </select>
+    <label for="nim">Mahasiswa</label>
+    <select name="nim" class="form-control" id="nim" required>
+      <option disabled selected>-- Pilih Mahasiswa --</option>
+      <% data_mahasiswa.forEach( mahasiswa => { %>
+        <option value="<%= mahasiswa.nim %>" <%= (data.nama_mahasiswa== mahasiswa.nama_mahasiswa) ? 'selected' : '' %> >
+          <%= mahasiswa.nama_mahasiswa %>
+        </option>
+        <% }) %>
+    </select>
+    <label for="tahun_awal">Tahun Awal</label>
+    <input type="text" name="tahun_awal" id="tahun_awal" placeholder="Tahun Awal" class="form-control" value="<%= data.tahun_awal %> " required>
+    <label for="tahun_akhir">Tahun Akhir</label>
+    <input type="text" name="tahun_akhir" id="tahun_akhir" placeholder="Tahun Awal" class="form-control"value="<%= data.tahun_akhir %> " required>
+    <label for="semester">Semester</label>
+    <select name="semester" id="semester" class="form-control" required>
+      <option disabled selected>-- Pilih Semester --</option>
+      <option value="1" <%= (data.semester == "1") ? 'selected' : '' %>>I</option>
+      <option value="2" <%= (data.semester == "2") ? 'selected' : '' %>>II</option>
+      <option value="3" <%= (data.semester == "3") ? 'selected' : '' %>>III</option>
+      <option value="4" <%= (data.semester == "4") ? 'selected' : '' %>>IV</option>
+      <option value="5" <%= (data.semester == "5") ? 'selected' : '' %>>V</option>
+      <option value="6" <%= (data.semester == "6") ? 'selected' : '' %>>VI</option>
+      <option value="7" <%= (data.semester == "7") ? 'selected' : '' %>>VII</option>
+      <option value="8" <%= (data.semester == "8") ? 'selected' : '' %>>VIII</option>
+      <option value="9" <%= (data.semester == "9") ? 'selected' : '' %>>IX</option>
+      <option value="10" <%= (data.semester == "10") ? 'selected' : '' %>>X</option>
+      <option value="11" <%= (data.semester == "11") ? 'selected' : '' %>>XI</option>
+      <option value="12" <%= (data.semester == "12") ? 'selected' : '' %>>XII</option>
+    </select>
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/jadwal/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+</div>
+
+<%- include('templates/footer') -%>

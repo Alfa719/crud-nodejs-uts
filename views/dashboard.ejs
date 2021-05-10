@@ -1,0 +1,86 @@
+<%- include('templates/header') -%> 
+  
+  <div class="container-fluid p-5" style="background-color: rgb(7, 7, 54); min-height: 100%;">
+    <div class="row p-5">
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid rgb(119, 250, 119);">
+          <div class="card-header bg-primary text-light font-weight-bold text-center shadow-lg">
+            <h4>Mahasiswa</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_mahasiswa.jumlah_mahasiswa %> </h3>
+            <a class="btn btn-dark float-right" href="/mahasiswa">
+              Jumlah Mahasiswa <span class="badge badge-primary"><%= data_mahasiswa.jumlah_mahasiswa %> </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid rgb(255, 166, 0);">
+          <div class="card-header bg-success text-light font-weight-bold text-center shadow-lg">
+            <h4>Dosen</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_dosen.jumlah_dosen %> </h3>
+            <a class="btn btn-dark float-right" href="/dosen">
+              Jumlah Dosen <span class="badge badge-primary"><%= data_dosen.jumlah_dosen %> </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid rgb(132, 0, 255);">
+          <div class="card-header bg-warning font-weight-bold text-center shadow-lg">
+            <h4>Mata Kuliah</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_matkul.jumlah_matkul %> </h3>
+            <a class="btn btn-dark float-right" href="/matkul">
+              Jumlah Matkul <span class="badge badge-primary"><%= data_matkul.jumlah_matkul %> </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid rgb(0, 225, 255);">
+          <div class="card-header bg-danger text-light font-weight-bold text-center shadow-lg">
+            <h4>Jadwal</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_jadwal.jumlah_jadwal %> </h3>
+            <a class="btn btn-dark float-right" href="/jadwal">
+              Jumlah Jadwal <span class="badge badge-primary"><%= data_jadwal.jumlah_jadwal %></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid red;">
+          <div class="card-header bg-secondary text-light font-weight-bold text-center shadow-lg">
+            <h4>Provinsi</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_provinsi.jumlah_provinsi %></h3>
+            <a class="btn btn-dark float-right" href="/provinsi">
+              Jumlah Provinsi <span class="badge badge-primary"><%= data_provinsi.jumlah_provinsi%></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-3 shadow-lg" style="border-left: 5px solid rgb(0, 102, 255);">
+          <div class="card-header bg-info text-light font-weight-bold text-center shadow-lg">
+            <h4>Kota</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold text-center py-2"><%= data_kota.jumlah_kota %></h3>
+            <a class="btn btn-dark float-right" href="/kota">
+              Jumlah Kota <span class="badge badge-primary"><%= data_kota.jumlah_kota %></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+<%- include('templates/footer') -%>

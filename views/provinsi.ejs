@@ -1,0 +1,48 @@
+<%- include('templates/header') -%>
+
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Provinsi</li>
+    </ol>
+  </nav>
+  <!-- Tambah Data -->
+  <form action="/provinsi/tambah" class="form-group p-4 shadow rounded" method="post" style="border-left: 4px solid blue;">
+    <label for="nama">Provinsi</label>
+    <input type="text" name="nama_provinsi" id="nama" placeholder="Masukkan Nama Provinsi Baru" required class="form-control">
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+
+  <table class="table shadow rounded">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nama Provinsi</th>
+        <th scope="col">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data.length !== 0) { %>
+        <% data.forEach((value, no) => { %>
+          <tr>
+            <th scope="row"><%= ++no %></th>
+            <td><%= value.nama_provinsi %></td>
+            <td>
+              <a href="/provinsi/delete/<%= value.id_provinsi %>" class="badge badge-pill badge-danger px-3 py-2 m-1">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+          <tr>
+            <td colspan="8" style="text-align: center;">
+              No Data Provinsi
+            </td>
+          </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('templates/footer') -%>

@@ -9,7 +9,7 @@
 </head>
 <body>
   
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(21, 21, 109);">
     <div class="container">
       <a class="navbar-brand font-weight-bold mr-5" href="#">NodeJS App</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,12 +17,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link <%= (activeStateMahasiswa == 'active') ? 'active badge-pill bg-primary px-3' : '' %>" href="/mahasiswa">Mahasiswa</a>
-          <a class="nav-item nav-link <%= (activeStateDosen == 'active') ? 'active' : '' %>" href="/dosen">Dosen</a>
-          <a class="nav-item nav-link <%= (activeStateMatkul == 'active') ? 'active' : '' %>" href="/matkul">Mata Kuliah</a>
-          <a class="nav-item nav-link <%= (activeStateJadwal == 'active') ? 'active' : '' %>" href="/jadwal">Jadwal</a>
-          <a class="nav-item nav-link <%= (activeStateProvinsi == 'active') ? 'active' : '' %>" href="/provinsi">Provinsi</a>
-          <a class="nav-item nav-link <%= (activeStateKota == 'active') ? 'active' : '' %>" href="/kota">Kota</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateBeranda == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %> " href="/">Beranda</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateMahasiswa == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/mahasiswa">Mahasiswa</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateDosen == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/dosen">Dosen</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateMatkul == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/matkul">Mata Kuliah</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateJadwal == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/jadwal">Jadwal</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateProvinsi == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/provinsi">Provinsi</a>
+          <a class="nav-item nav-link px-3 <%= (activeStateKota == 'active') ? 'active badge-pill bg-primary px-3 font-weight-bold' : '' %>" href="/kota">Kota</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,124 @@
+<%- include('templates/header') -%> 
+  
+
+<div class="container">
+  
+  <h3 class="font-weight-bold text-center m-2">Jadwal</h3>
+  <div class="shadow-lg p-4" style="border-radius: 20px;">
+    <form action="/jadwal/search-mahasiswa" method="post">
+    <div class="col-md-3 my-4 shadow-lg py-1" style="border-left: 3px solid blue; border-right: 3px solid blue ;">
+      <h5 class="text-center">Search On Mahasiswa</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <select name="nim" id="nim" class="form-control">
+          <option value="" disabled selected>-- Order By NIM --</option>
+          <% data_mahasiswa.forEach( data => { %>
+          <option value="<%= data.nim %>">
+            <%= data.nim %>
+          </option>
+          <% }) %>
+        </select>
+        <small class="text-danger">NIM wajib di pilih</small>
+      </div>
+      <div class="col-md-3">
+        <select name="semester" id="semester" class="form-control">
+          <option value="null" disabled selected>-- Order By Semester --</option>
+          <option value="1">I</option>
+          <option value="2">II</option>
+          <option value="3">III</option>
+          <option value="4">IV</option>
+          <option value="5">V</option>
+          <option value="6">VI</option>
+          <option value="7">VII</option>
+          <option value="8">VIII</option>
+          <option value="9">IX</option>
+          <option value="10">X</option>
+          <option value="11">XI</option>
+          <option value="12">XII</option>
+        </select>
+        <small class="text-info">Semester tidak wajib di pilih</small>
+      </div>
+      <div class="col-md-3">
+        <input type="submit" value="Search" class="btn btn-outline-info px-3">
+      </div>
+    </div>
+    </form>
+    <form action="/jadwal/search-dosen" method="post" class="">
+      <div class="col-md-3 my-4 shadow-lg py-1" style="border-left: 3px solid blue; border-right: 3px solid blue ;">
+        <h5 class="text-center">Search On Dosen</h5>
+      </div>
+      <div class="row"> 
+        <div class="col-md-3">
+          <select name="id_dosen" id="id_dosen" class="form-control">
+            <option value="" disabled selected>-- Order By ID Dosen --</option>
+            <% data_dosen.forEach( data => { %>
+              <option value="<%= data.id_dosen %>">
+                <%= data.id_dosen %>
+              </option>
+            <% }) %>
+          </select>
+          <small class="text-danger">ID Dosen Wajib Di Pilih</small>
+        </div>
+        <div class="col-md-3">
+          <select name="id_matkul" id="id_matkul" class="form-control">
+            <option value="" disabled selected>-- Order By ID Matkul --</option>
+            <% data_matkul.forEach( data => { %>
+            <option value="<%= data.id_matkul %>">
+              <%= data.id_matkul %>
+            </option>
+            <% }) %>
+          </select>
+          <small class="text-info">ID Mata Kuliah Tidak Wajib Di Pilih</small>
+        </div>
+        <div class="col-md-3">
+          <input type="submit" value="Search" class="btn btn-outline-info px-3">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <a href="/jadwal/tambah" class="btn btn-outline-success my-3 px-3">Tambah Data</a>
+  
+  <table class="table table-stripped table-hover shadow-lg">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">NIM</th>
+        <th scope="col">Mahasiswa</th>
+        <th scope="col">Mata Kuliah</th>
+        <th scope="col">Dosen Pengajar</th>
+        <th scope="col">Tahun</th>
+        <th scope="col">Semester</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data.length !== 0) { %>
+        <% data.forEach((value, no) => { %>
+          <tr>
+            <th scope="row"><%= ++no %></th>
+            <td><%= value.nim %></td>
+            <td><%= value.nama_mahasiswa %></td>
+            <td><%= value.nama_matkul %></td>
+            <td><%= value.nama_dosen %></td>
+            <td><%= value.tahun_awal %> - <%= value.tahun_akhir %></td>
+            <td><%= value.semester %></td>
+            <td>
+              <a href="/jadwal/edit/<%= value.id_jadwal %> " class="px-3 py-2 m-1 badge badge-pill badge-primary">Edit</a>
+              <a href="/jadwal/delete/<%= value.id_jadwal %>" class="px-3 py-2 m-1 badge badge-pill badge-danger">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="8" style="text-align: center;">
+            No Data Jadwal
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('templates/footer') -%>

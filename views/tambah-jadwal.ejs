@@ -1,0 +1,65 @@
+<%- include('templates/header') -%>
+  
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item text-decoration-none"><a href="/jadwal">Jadwal</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Jadwal</li>
+    </ol>
+  </nav>
+  
+  <form action="/jadwal/tambah-jadwal" class="form-group p-4 shadow rounded" method="post" style="border-left: 4px solid blue;">
+    <label for="id_dosen">Dosen</label>
+    <select name="id_dosen" class="form-control" id="id_dosen" required>
+      <option disabled selected>-- Pilih Dosen --</option>
+      <% data_dosen.forEach( data => { %>
+        <option value="<%= data.id_dosen %>">
+          <%= data.nama %>
+        </option>
+      <% }) %>
+    </select>
+    <label for="id_matkul">Mata Kuliah</label>
+    <select name="id_matkul" class="form-control" id="id_matkul" required>
+      <option disabled selected>-- Pilih Mata Kuliah --</option>
+      <% data_matkul.forEach( data => { %>
+        <option value="<%= data.id_matkul %>">
+          <%= data.nama %>
+        </option>
+        <% }) %>
+    </select>
+    <label for="nim">Mahasiswa</label>
+    <select name="nim" class="form-control" id="nim" required>
+      <option disabled selected>-- Pilih Mahasiswa --</option>
+      <% data_mahasiswa.forEach( data => { %>
+        <option value="<%= data.nim %>">
+          <%= data.nama %>
+        </option>
+        <% }) %>
+    </select>
+    <label for="tahun_awal">Tahun Awal</label>
+    <input type="number" name="tahun_awal" id="tahun_awal" placeholder="Tahun Awal" class="form-control" required>
+    <label for="tahun_akhir">Tahun Akhir</label>
+    <input type="number" name="tahun_akhir" id="tahun_akhir" placeholder="Tahun Awal" class="form-control" required>
+    <label for="semester">Semester</label>
+    <select name="semester" id="semester" class="form-control" required>
+      <option disabled selected>-- Pilih Semester --</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
+      <option value="7">VII</option>
+      <option value="8">VIII</option>
+      <option value="9">IX</option>
+      <option value="10">X</option>
+      <option value="11">XI</option>
+      <option value="12">XII</option>
+    </select>
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/jadwal/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+</div>
+
+<%- include('templates/footer') -%>

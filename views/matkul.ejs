@@ -1,0 +1,68 @@
+<%- include('templates/header') -%>
+
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Mata Kuliah</li>
+    </ol>
+  </nav>
+  <!-- Tambah Data -->
+  <form action="/matkul/tambah" class="form-group p-4 shadow rounded" method="post" style="border-left: 4px solid blue;">
+    <label for="nama">Mata Kuliah</label>
+    <input type="text" name="matkul" id="nama" placeholder="Masukkan Mata Kuliah Baru" required class="form-control">
+    <label for="semester">Semester</label>
+    <select name="semester" id="semester" class="form-control" required>
+      <option disabled selected>-- Pilih Semester --</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
+      <option value="7">VII</option>
+      <option value="8">VIII</option>
+    </select>
+    <label for="sks">SKS</label>
+    <input type="number" name="sks" id="sks" class="form-control" required placeholder="Masukkan Jumlah SKS">
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+
+  <table class="table shadow rounded">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID Mata Kuliah</th>
+        <th scope="col">Mata Kuliah</th>
+        <th scope="col">Semester</th>
+        <th scope="col">SKS</th>
+        <th scope="col">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data.length !== 0) { %>
+        <% data.forEach((value, no) => { %>
+          <tr>
+            <th scope="row"><%= ++no %></th>
+            <td><%= value.id_matkul %></td>
+            <td><%= value.nama %></td>
+            <td><%= value.semester %></td>
+            <td><%= value.sks %></td>
+            <td>
+              <a href="/matkul/delete/<%= value.id_matkul %>" class="badge badge-pill badge-danger px-3 py-2 m-1">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+          <tr>
+            <td colspan="8" style="text-align: center;">
+              No Data Mata Kuliah
+            </td>
+          </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('templates/footer') -%>
